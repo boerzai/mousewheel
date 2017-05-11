@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚轮</title>
+	<script src="functions.js"></script>
+	<script>
+     $(function(){
+     	var one=document.querySelector(".one");
+
+   	mouseWheel(one,function(){
+     		one.style.background="green"
+     	},function(){
+     		one.style.background="blue"
+     	});
+
+     	/*放大缩小*/
+     	var bili=one.offsetWidth/one.offsetHeight;
+     	 mouseWheel(one,function(){
+     		
+     		var widths=this.offsetWidth+10;
+     		var heights=this.offsetHeight+10/bili;
+               if(widths>=500){
+                    widths=500
+               }if(heights>=500){
+                    heights=500
+               }
+     		this.style.width=widths+"px";
+     		this.style.height=heights+"px";
+     	},function(){
+     		
+     		var widths=this.offsetWidth-10;
+     		var heights=this.offsetHeight-10/bili;
+     		this.style.width=widths+"px";
+     		this.style.height=heights+"px";
+     	})
+     })
+	</script>
+</head>
+<style>
+	.one{
+		width:200px;
+		height:200px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top:0;
+	}
+
+</style>
+<body>
+	<div class="one"></div>
+	
+</body>
+</html>
